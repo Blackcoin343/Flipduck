@@ -1,0 +1,28 @@
+REM login with username and password 
+DELAY 1000
+ESCAPE
+DELAY 1000
+SPACE
+DELAY 700
+BACKSPACE
+DELAY 700
+STRING USERNAME HERE <-----------------
+DELAY 1000
+TAB
+STRING PASSWORD HERE <-----------------
+DELAY 1000
+ENTER
+
+----------------------------------------------------------
+
+REM login with password 
+DELAY 1000
+ESCAPE
+DELAY 800
+SPACE
+DELAY 700
+BACKSPACE
+DELAY 700
+STRING HERE <-----------------
+DELAY 700
+ENTER
